@@ -1,0 +1,27 @@
+{
+  "name": "blescan",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "hex-to-array-buffer": "^1.1.0",
+    "kaios-scripts": "0.0.9",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "scripts": {
+    "start": "kaios-scripts start",
+    "build": "kaios-scripts build",
+    "push": "kaios-scripts push",
+    "test": "kaios-scripts test",
+    "eject": "kaios-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
