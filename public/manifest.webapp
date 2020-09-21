@@ -12,10 +12,11 @@
     "112": "/icons/app_112.png"
   },
   "theme_color": "#a065e6",
-  "type": "privileged",
+  "type": "certified",
   "permissions": {
     "systemXHR": {},
-    "bluetooth": {}
+    "bluetooth": {},
+    "notification": {}
   },
   "chrome": {
     "statusbar": "overlap"
@@ -23,7 +24,7 @@
   "orientation": "default",
   "locales": {
     "en-US": {
-      "name": "BLE Privileged",
+      "name": "Template",
       "description": "Template App for KaiOS"
     },
     "zh-CN": {
@@ -31,8 +32,5 @@
       "description": "KaiOS模板应用"
     }
   },
-  "default_locale": "en-US",
-  "bluetooth": {
-    "description": "The device has to connect with the Smart Watches"
-  }
+  "default_locale": "en-US"
 }
