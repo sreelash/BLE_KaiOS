@@ -12,11 +12,9 @@
     "112": "/icons/app_112.png"
   },
   "theme_color": "#a065e6",
-  "type": "certified",
+  "type": "privileged",
   "permissions": {
-    "systemXHR": {},
-    "bluetooth": {},
-    "notification": {}
+    "systemXHR": {}
   },
   "chrome": {
     "statusbar": "overlap"
