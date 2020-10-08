@@ -80,6 +80,17 @@ class Page4 extends Component {
             <div className="items" tabIndex="1">Apple</div>
             <div className="items" tabIndex="2">Orange</div>
             <div className="items" tabIndex="3">Melon</div>
+            <RadioGroup onChange={ this.onChange } vertical>
+              <RadioButton value="apple" className="items" tabIndex="4">
+                Apple
+              </RadioButton>
+              <RadioButton value="orange" className="items" tabIndex="5">
+                Orange
+              </RadioButton>
+              <RadioButton value="melon" className="items" tabIndex="6">
+                Melon
+              </RadioButton>
+            </RadioGroup>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" className="items" tabIndex="4" onClick={this.handleClose}>
