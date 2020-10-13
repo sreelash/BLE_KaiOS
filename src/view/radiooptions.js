@@ -62,24 +62,41 @@ class RadioOptions extends Component {
   render() {
     return(
       <div>
-        <Modal size="lg" show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header>
-            <Modal.Title>Modal Popup</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div className="items" tabIndex="1">Apple</div>
-            <div className="items" tabIndex="2">Orange</div>
-            <div className="items" tabIndex="3">Melon</div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" className="items" tabIndex="4" onClick={this.handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" className="items" tabIndex="5" onClick={this.handleClose}>
-              Save It!
-            </Button>
-          </Modal.Footer>
-        </Modal>
+      <div className="items" tabIndex="1">Apple</div>
+      <div className="items" tabIndex="2">Orange</div>
+      <div className="items" tabIndex="3">Melon</div>
+      <form>
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="Male"
+              className="items" tabIndex="4"
+            />
+            Male
+          </label>
+        </div>
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="Female"
+              className="items" tabIndex="5"
+            />
+            Female
+          </label>
+        </div>
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="Other"
+              className="items" tabIndex="6"
+            />
+            Other
+          </label>
+        </div>
+    </form>
       </div>
     )
   }

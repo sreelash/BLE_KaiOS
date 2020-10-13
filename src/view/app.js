@@ -10,42 +10,6 @@ import Header from "./header";
 import Footer from "./footer";
 
 class App extends Component {
-  componentDidMount() {
-    document.activeElement.addEventListener('keydown', this.handleKeydown);
-  }
-
-  handleKeydown = (e) => {
-    // console.log('Handle Key Down', e.key)
-
-    switch(e.key) {
-      case 'ArrowUp':
-        this.nav(-1);
-        break;
-      case 'ArrowDown':
-        this.nav(1);
-        break;
-      case 'ArrowRight':
-        this.nav(1);
-        break;
-      case 'ArrowLeft':
-        this.nav(-1);
-        break;
-    }
-  }
-
-  nav = (move) => {
-    const currentIndex = document.activeElement.tabIndex;
-    // console.log('Current Index - ', currentIndex)
-
-    const next = currentIndex + move;
-    // console.log('Next - ', next)
-
-    const items = document.querySelectorAll('.items');
-    const targetElement = items[next];
-    // console.log('Target element - ', targetElement)
-
-    targetElement.focus();
-  }
 
   render() {
     return (

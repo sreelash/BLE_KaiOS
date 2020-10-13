@@ -2,17 +2,23 @@ import React, { Component } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import RadioOptions from './radiooptions'
+import './page4.css';
 
 class Page4 extends Component {
   componentDidMount() {
-    document.activeElement.addEventListener('keydown', this.handleKeydown);
+    document.addEventListener('keydown', this.handleKeydown);
 
     const items = document.querySelectorAll('.items');
-    console.log('Items - ', items)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeydown);
   }
 
   state = {
-    show: false
+    show: false,
+    tabIndex: -1,
+    color: 'green'
   }
 
   handleKeydown = (e) => {
@@ -35,20 +41,21 @@ class Page4 extends Component {
   }
 
   nav = (move) => {
+    // console.log('------------------------------------------------------------')
     const items = document.querySelectorAll('.items');
-    const currentIndex = document.activeElement.tabIndex;
+    const currentIndex = this.state.tabIndex;
     const next = currentIndex + move;
 
-    console.log('Items - ', items)
-    console.log('Current Index - ', currentIndex)
+    // console.log('tabIndex', currentIndex);
+    // console.log('Items - ', items)
+    // console.log('Current Index - ', currentIndex)
 
-    if (currentIndex < items.length) {
-      console.log('Next - ', next)
+    if (next < items.length && next > -1) {
+      // console.log('Next - ', next)
       const targetElement = items[next];
-      console.log('Target element - ', targetElement)
-      console.log('Target element tabIndex before focus - ', document.activeElement.tabIndex)
+      // console.log('Target element - ', targetElement)
       targetElement.focus();
-      console.log('Target element tabIndex after focus - ', document.activeElement.tabIndex)
+      this.setState({ tabIndex: next})
     }
   }
 
@@ -61,8 +68,18 @@ class Page4 extends Component {
     console.log('State ', this.state)
   }
 
-  onChange = (value) => {
-    console.log('Selected value ', value);
+  onRadioChange = (e) => {
+    e.preventDefault();
+    console.log('Color change - ', e.target.value)
+
+    this.setState({
+      color: e.target.value
+    });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state);
   }
 
   render() {
@@ -80,23 +97,106 @@ class Page4 extends Component {
             <div className="items" tabIndex="1">Apple</div>
             <div className="items" tabIndex="2">Orange</div>
             <div className="items" tabIndex="3">Melon</div>
-            <RadioGroup onChange={ this.onChange } vertical>
-              <RadioButton value="apple" className="items" tabIndex="4">
-                Apple
-              </RadioButton>
-              <RadioButton value="orange" className="items" tabIndex="5">
-                Orange
-              </RadioButton>
-              <RadioButton value="melon" className="items" tabIndex="6">
-                Melon
-              </RadioButton>
-            </RadioGroup>
+
+            <form onSubmit={this.onSubmit}>
+              <strong>Select Color:</strong>
+
+              <ul>
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      value="red"
+                      checked={this.state.color === "red"}
+                      onChange={this.onRadioChange}
+                      className="items" tabIndex="4"
+                    />
+                    <span>Red</span>
+                  </label>
+                </li>
+
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      value="green"
+                      checked={this.state.color === "green"}
+                      onChange={this.onRadioChange}
+                      className="items" tabIndex="5"
+                    />
+                    <span>Green</span>
+                  </label>
+                </li>
+
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      value="blue"
+                      checked={this.state.color === "blue"}
+                      onChange={this.onRadioChange}
+                      className="items" tabIndex="6"
+                    />
+                    <span>Blue</span>
+                  </label>
+                </li>
+
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      value="orange"
+                      checked={this.state.color === "orange"}
+                      onChange={this.onRadioChange}
+                      className="items" tabIndex="7"
+                    />
+                    <span>Ornage</span>
+                  </label>
+                </li>
+
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      value="purple"
+                      checked={this.state.color === "purple"}
+                      onChange={this.onRadioChange}
+                      className="items" tabIndex="8"
+                    />
+                    <span>Purple</span>
+                  </label>
+                </li>
+              </ul>
+
+              <button type="submit" className="items" tabIndex="9">Choose Color</button>
+            </form>
+
+            <div role="radiogroup" aria-labelledby="gdesc1">
+              <h3>
+                Pizza Crust
+              </h3>
+              <div role="radio"
+                   aria-checked="false"
+                   tabindex="10" className="items">
+                 Regular crust
+              </div>
+              <div role="radio"
+                   aria-checked="false"
+                   tabindex="11" className="items">
+                 Deep dish
+              </div>
+              <div role="radio"
+                   aria-checked="false"
+                   tabindex="12" className="items">
+                 Thin crust
+              </div>
+            </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" className="items" tabIndex="4" onClick={this.handleClose}>
+            <Button variant="secondary" className="items" tabIndex="13" onClick={this.handleClose}>
               Close
             </Button>
-            <Button variant="primary" className="items" tabIndex="5" onClick={this.handleClose}>
+            <Button variant="primary" className="items" tabIndex="14" onClick={this.handleClose}>
               Save It!
             </Button>
           </Modal.Footer>
